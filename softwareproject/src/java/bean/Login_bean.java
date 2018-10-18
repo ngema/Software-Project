@@ -5,10 +5,7 @@
  */
 package bean;
 
-import common_things.DB_Connection;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 
 /**
  *

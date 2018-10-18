@@ -32,8 +32,21 @@ public class Login_modal {
      public int no_student = 0;
      public String update="";
      public String sql1="";
-    
+     public int year=0;
      public String updatebooked="";  // sql query
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      
    
@@ -95,16 +108,17 @@ public class Login_modal {
          results = preps.executeQuery(sql);
           resultsname = preps1.executeQuery(sql2);
           
-          
           if(results.next()){  //login
              flag=true;
              if(resultsname.next()){
                  name = results.getString(2);
                  status = results.getString(4);
+                 year = results.getInt(6);
              }
            if("student".equals(status)){
                
-               sqlmodule= "SELECT * FROM modules WHERE 1"; // collecting database modules EDITED ON THE 04/10/2018
+               sqlmodule= "SELECT * FROM modules WHERE year="
+                       + year; // collecting database modules EDITED ON THE 04/10/2018
                
            }else{   
                  sqlmodule= "SELECT * FROM modules WHERE lecture_id="+"'"+Login_object.get_uname()+"'"; // collecting database modules EDITED ON THE 04/10/2018
@@ -115,24 +129,22 @@ public class Login_modal {
              
           
               while(modulesresults.next()){
-                 
                    modulesid[i] = modulesresults.getString(1);
                    modulesname[i] = modulesresults.getString(2);
-                   
                     i=i+1;
          }
                  
            
          }
          
-        } catch(Exception e){
+        } catch(SQLException e){
         
         }finally{
             try{
             if(con != null){
                 con.close();
             }
-            }catch(Exception e){
+            }catch(SQLException e){
                 
             }
         }
