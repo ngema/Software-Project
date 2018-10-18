@@ -28,7 +28,8 @@ public class Login_modal {
     public   int i = 0;
     public   int SIZE = 0;
     public   int j = 0;
-     public   int k = 0;//k for slots 
+     public   int k = 0;//k for slots
+     public int z=0;
      public int no_student = 0;
      public String update="";
      public String sql1="";
@@ -37,16 +38,8 @@ public class Login_modal {
      
      
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+     public String[] student_no= new String[100];
+
      
      
    
@@ -73,21 +66,21 @@ public class Login_modal {
                   slots[k++]=resultslot.getString(1);
        
         }
-        catch(Exception e){
+        catch(SQLException e){
                
         }finally{
             try{
             if(con != null){
                 con.close();
             }
-            }catch(Exception e){
+            }catch(SQLException e){
                 
             }
         }
         
 }
     
-    public boolean check_user_name(Login_bean Login_object){
+        public boolean check_user_name(Login_bean Login_object){
         boolean flag=false;
         DB_Connection connect = new DB_Connection();
         Connection con = connect.startConnect();
@@ -151,6 +144,51 @@ public class Login_modal {
         
         
         return flag;
+    } 
+  
+    
+    
+   
+    
+    public void registeredstu(){
+        boolean flag=false;
+        DB_Connection connect = new DB_Connection();
+        Connection con = connect.startConnect();
+        
+        
+        try{
+         String sql = "SELECT * FROM registered_students WHERE 1";
+
+          
+         Statement preps = con.prepareStatement(sql);
+        
+         
+         results = preps.executeQuery(sql);
+       
+          
+          while(results.next()){  //login
+            
+          student_no[z] = results.getString(1);
+   
+          z++;
+        
+           
+         }
+         
+        } catch(SQLException e){
+        
+        }finally{
+            try{
+            if(con != null){
+                con.close();
+            }
+            }catch(SQLException e){
+                
+            }
+        }
+        
+        
+ 
     } 
   
     

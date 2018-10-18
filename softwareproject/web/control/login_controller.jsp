@@ -73,16 +73,16 @@
         
         for (int i=0;i<Login_object.i;i++){
       %>
-    
+      <!-- modules printing -->
           <tr>
               
              
           
-              <td><a href="../module.html"><%  out.print(Login_object.modulesid[i]); %> </a></td>  <!-- table id printing-->
+              <td><%  out.print(Login_object.modulesid[i]); %> </td>  <!-- table id printing-->
          
              
           
-              <td><a href="../module.html" ><% out.print(Login_object.modulesname[i]);%> </a></td> <!-- table modules names printing-->
+              <td><% out.print(Login_object.modulesname[i]);%> </td> <!-- table modules names printing-->
               
              
             
@@ -94,6 +94,9 @@
 
           </tbody>
           
+          <!-- update marks or upload file -->
+          
+        
           
          </table>
               <% if("student".equals(Login_object.status)){ %>
@@ -122,31 +125,35 @@
                <option value="<%  out.print(Login_object.modulesid[i]); %>">
          <%
               }%>
+              
+              
+              
                
                 </datalist>
             </form>  
-              
+         <% if("lecture".equals(Login_object.status)){ %>
+          
+           <button class="btn btn success" > <a href="registeredstudent.jsp">View Students</a>  </button>
+          <button class="btn btn success"  > <a href="../Upload.jsp">Upload</a>  </button>
+          <% } %>       
    </div> 
                  
                  
                  
                  
-                 
-                 
-                 
-                 
-                 
            
-                 
-        
         <%
                 
             }else
-            {
-                out.println(flag +"unsuccessful");
-            }
-
+            {out.println("user unsuccessful");
         %>
+        
+        <a href="../index.html" > GO BACK </a>
+      
+  
+
+<%   }
+      %>
     </body>
       <script src="http://code.JQuery.com/jquery.js"></script>
       <script src= "vendor/jquery/jquery.js"></script>
