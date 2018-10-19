@@ -15,6 +15,9 @@ public class Login_modal {
      public String full=" ";  // slots booked full
     public int size = 0;
    public ResultSet results = null;
+   public ResultSet marks = null;
+    public ResultSet stmt = null;
+   
     public ResultSet resultsname = null;
     public ResultSet resultslot = null;
     public ResultSet modulesresults=null; // displaying the registerered modules 
@@ -159,22 +162,31 @@ public class Login_modal {
         try{
          String sql = "SELECT * FROM registered_students WHERE 1";
 
+           String marks = "SELECT student_mark FROM registered_students WHERE module_id="+"'"+"MATH360"+"'";
+            Statement preps2 = con.prepareStatement(marks);
           
          Statement preps = con.prepareStatement(sql);
         
          
          results = preps.executeQuery(sql);
-       
+         resultslot=preps2.executeQuery(marks);
           
           while(results.next()){  //login
             
-          student_no[z] = results.getString(1);
+          student_no[z] = results.getString(1); // get students numbers 
    
           z++;
-        
-           
          }
+          
+          
+//           no_student = no_student+ 10;
+//          update = "UPDATE registered_students set student_mark="+no_student +" WHERE module_id="+"'"+"MATH360"+"'";
+//         
+//             preps2 = con.prepareStatement(update);
+//         preps2.executeUpdate(update);
          
+    
+            
         } catch(SQLException e){
         
         }finally{

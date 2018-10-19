@@ -42,7 +42,7 @@
        
         %>
         
-         <input type="submit" name="send" id="submit" tabindex="1" class="btn btn-primary" value="Send">
+         <input type="submit" name="send" id="submit" tabindex="1" class="btn btn-primary" value="Send" class="d-inline p-2 bg-primary text-white">
          
          
          <%
@@ -69,7 +69,7 @@
              
 </form>  
         
-             <button class="btn btn success" > <a href="../Upload.jsp">Upload</a>  </button>
+             <button class="btn btn success" class="d-inline p-2 bg-dark text-white"> <a href="../Upload.jsp">Upload</a>  </button>
         
         
         
